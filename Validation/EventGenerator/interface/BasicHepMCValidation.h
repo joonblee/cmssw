@@ -129,7 +129,7 @@ class BasicHepMCValidation : public DQMEDAnalyzer{
       }
       
       const HepMC::GenParticle* GetFinal(const HepMC::GenParticle* p){ // includes mixing (assuming mixing is not occurring more than 5 times back and forth)
-        const HepMC::GenParticle* aPart = p;
+        HepMC::GenParticle* aPart = new HepMC::GenParticle(*p);
 	for (unsigned int iMix = 0; iMix < 10; iMix++) {
 	  bool foundSimilar = false;
 	  if(aPart->end_vertex()){ 
